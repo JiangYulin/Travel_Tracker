@@ -1,0 +1,8 @@
+extends layout/layout_m
+
+block content
+  div(data-role="intro", class="intro" )
+      button(data-role="login", class="big-btn btn href", href="/login", id="btn-login") 登录
+      button(data-role="register", class="big-btn btn href", href="/register", id="btn-register") 注册
+      button(data-role="about", class="big-btn btn href" , href="/travel/create" ,id="btn-about") 关于travel tracker
+  script(src="/javascripts/index.js", type="text/javascript" )

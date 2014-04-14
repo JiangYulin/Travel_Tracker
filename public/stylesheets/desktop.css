@@ -1,0 +1,190 @@
+html {
+    overflow:hidden;
+    overflow-y: scroll;
+}
+body {
+    text-align: center;
+    background-color: #ededef;
+    width: 100%;
+    font-family: font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑",tahoma,arial,simsun,"宋体";
+}
+textarea {
+font-family: inherit;
+    font-size: inherit;
+}
+
+* {
+    margin:0;
+    padding:0;
+}
+a {
+    text-decoration: none;
+    color: #000000;
+}
+ul {
+    list-style: none;
+}
+
+#nav {
+    width:100%;
+    height: 70px;
+    background-color: #000000;
+}
+
+#footer {
+    width: 100%;
+    height: auto;
+    color: darkgray;
+    position: fixed;
+    bottom: 10px;
+}
+
+    /*
+    表单统一规范
+    */
+form input {
+    width: 99%;
+    height: 30px;
+    border: 1px solid lightgrey;
+}
+form textarea {
+    width: 99%;
+    height: 80px;
+    resize: none;
+    border: 1px solid lightgrey;
+    margin-top: 5px;
+}
+form button {
+    width: 99%;
+    height: 30px;
+    background-color: rgba(255,255,255,1);
+    line-height: 30px;
+    border: 1px solid lightgrey;
+}
+form button:hover {
+   background-color: #000000;
+   color: #ffffff;
+}
+#main {
+    width: 928px;
+    height: auto;
+    min-width: 928px;
+    margin:30px auto;
+    position: relative;
+    overflow: hidden;
+}
+#personal_operate {
+    width: 230px;
+    float: right;
+    text-align: center;
+}
+#personal_info {
+    height: 200px;
+    width: 90%;
+    margin: 10px auto;
+    background: rgba(255, 255, 255, 0.8) url('/images/touxiang.jpg');
+    background-size: cover;
+    border-radius: 3px;
+}
+.operate {
+    width: 90%;
+    border: 1px solid lightgrey;
+    height: 40px;
+    margin:10px auto;
+    text-align: center;
+    cursor: pointer;
+}
+#active_travel_title {
+    width: 90%;
+    margin: 0 auto;
+    height: 40px;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#active_travel_title span{
+    margin: 0 auto;
+    line-height: 40px;
+    font-weight:bold;
+}
+/*
+侧栏的显示
+*/
+
+.link {
+    display: inline-block;
+    width:207px;
+    /*  230*0.9
+    不知道为什么，display要定义为inline-block才可以，定义a标签的宽度与高度
+    */
+    height: 40px;
+}
+.link span {
+    line-height: 40px;
+}
+
+/*
+    list页面的数据呈现部分
+*/
+
+#data_container {
+    float: left;
+    width: 674px;
+    padding-top: 10px;
+    text-align: left;
+    margin-bottom: 30px;
+    position: relative;
+}
+.item {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    margin-bottom:30px;
+} .item_img { border: 1px solid rgba(0,0,0,0.2); float: left; width: 60px; height: 60px; } .data_wrap { border: 1px solid rgba(0,0,0,0.2); float: right; width: 80%; padding: 10px; } .data_title_wrap { padding-top:3px; padding-bottom: 3px; height: 40px; } .data_title_wrap span { line-height: 40px; font-style: italic; font-size:15px; color: gray; font-weight: bold; }
+.travel_data_wrap {
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.travel_data_wrap img{
+    width: 30%;
+    height: 100px;
+    float: left;
+    border-width: 0;
+    margin: 10px 10px;
+
+}
+.travel_data_wrap p {
+    float: left;
+    margin-top:10px;
+}
+
+/*
+ 创建旅途的相关css
+ */
+
+.container {
+    padding: 25px;
+    background-color: white;
+}
+.new_travel_intro {
+    text-align: left;
+}
+.title {
+    font-weight: lighter;
+    margin-bottom: 20px;
+}
+
+.new_travel_explain p{
+    color: gray;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+.new_travel_explain {
+    margin-bottom: 20px;
+}
+
+hr {
+    margin-top:10px;
+    margin-bottom: 10px;
+}

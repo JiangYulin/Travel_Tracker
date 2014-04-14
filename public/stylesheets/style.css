@@ -1,0 +1,232 @@
+body {
+  position: absolute;
+  width:100%;
+  height:100%;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-size: cover;
+
+}
+*{
+    margin:0;
+    padding:0;
+}
+a {
+  color: #00B7FF;
+}
+
+input {
+    width: 70%;
+    height: 3em;
+    border-radius:0.2em;
+    border: 0.1em solid green;
+    transition: all 0.5s;
+    display: block;
+    margin:0.2em auto;
+    background-color: rgba(255,255,255,0.7);
+}
+.error {
+    border: 0.1em solid red;
+    box-shadow: 0 0 0.3em 0.1em rgba(0 , 0 , 0, 0.5);
+}
+
+.btn {
+    width:9em;
+    height: 3em;
+    border-radius:0.2em;
+    margin-top:0.2em;
+    border: 0.1em solid green;
+    transition: all 0.5s;
+    display: block;
+    margin:0.2em auto;
+    background-color: rgba(255,255,255,0.7);
+}
+
+.page {
+    width:100%;
+    height: 100%;
+    position:absolute;
+    overflow-x: hidden;
+}
+
+
+.header {
+    z-index: 100;
+    width:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    height:3em;
+    background-color:lightskyblue;
+
+}
+
+.main {
+    position: absolute;
+    /*这个position主要是因为过度效果时，要保证两个页面在同一个位置*/
+    width:100%;
+    margin-top:4.5em;
+    height:auto;
+}
+
+.footer {
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    height: 3em;
+    width:100%;
+    background-color: lightseagreen;
+}
+
+/*login page
+
+
+*/
+.main form {
+    text-align: center;
+}
+.main form input {
+}
+
+/*通知区域*/
+#notification-rape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: -3.5em 0 auto;
+}
+#notification {
+    top:9em;
+    width: 10em;
+    height: auto;
+    position:  relative;
+    z-index: 100;
+    border: 0.1em solid black;
+    border-radius: 0.3em;
+    margin: 0 auto;
+    padding: 0.3em;
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    opacity: 0;
+}
+
+/*主页部分*/
+.intro {
+    text-align: center;
+}
+.big-btn {
+    width:19em;
+}
+
+/*特效过度部分*/
+.inactive {
+    display: none;
+    opacity: 0;
+
+}
+
+/* 操作栏 */
+.menu-container {
+    height: 100%;
+    width:100%;
+}
+
+.menu-item {
+    float: left;
+    display: inline;
+    width:20%;
+    height: 100%;
+    background-color: gray;
+    transition: all 0.5s;
+    text-align: center;
+    line-height: 3em;
+}
+.menu-item:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/*
+travel 部分
+
+
+
+*/
+.travel-container .item-wrap {
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+.travel-container .item-wrap li{
+    position:relative;
+    width:80%;
+    height: auto;
+    display: inline-block;
+    margin: 1em auto;
+    text-align: center;
+    box-shadow: 0 0 0.5em 0.5em rgba(33, 109, 195, 0.38);
+}
+/*
+    item 内容部分
+*/
+.item .item-title {
+    padding:0.3em;
+    position: absolute;
+    background-color: rgba(255,255,255, 0.4);
+    z-index:1;
+}
+.item .item-cover {
+    width: 100%;
+    height: auto;
+    position: relative;
+
+}
+.item .item-cover img {
+    width: 100%;
+    display: inherit;
+}
+
+.item .item-describe {
+    padding:0.3em;
+    z-index:1;
+    position: absolute;
+    bottom: 0;
+    color:white;
+    background-color: rgba(0,0,0,0.7);
+}
+
+/*
+    create An New J 页面css
+*/
+#travel-describe {
+    resize: none;
+    width: 70%;
+    height: 12em;
+    border-radius: 0.2em;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+/*
+    edit travel 界面
+*/
+.edit-wrap .travel-edit-title {
+    text-align: left;
+    margin-left: 1em;
+    font: 15px "sans-serif", hojo-kanji;
+}
+.edit-wrap .slash {
+    height: 0.3em;
+    background-color:lightskyblue;
+}
+#actions {
+    height: 4em;
+}
+
+#actions .action {
+    width:18%;
+    height:4em;
+    background-color: lightblue;
+    display: inline;
+    float: left;
+    margin:0.3em 1%;
+}

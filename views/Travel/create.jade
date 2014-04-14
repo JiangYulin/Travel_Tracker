@@ -1,0 +1,17 @@
+//Created by jiangyulin on 14-1-19.
+extends ../layout/layout_desktop
+
+block content
+    div#main
+        div.container
+            div.new_travel_intro
+                h2.title 创建一个新的旅程
+                div.new_travel_explain
+                    p 创建一个新的旅行计划
+                    p 在创建后，你现有的旅行计划会自动转入到暂停状态。
+                    p 您可以向这个旅行的实例中上传您的旅行中的记录、生活点滴和照片等。
+                hr
+                form(action="/travel/new",method="POST", id="create_travel_form")
+                    input(name="title",id="travel-title", type="text",placeholder="Travel's name")
+                    textarea(name="describe", id="travel-describe", type="text",placeholder="Describe your travel...")
+                    button(class="btn big-btn", id="create_travel") 创建旅程

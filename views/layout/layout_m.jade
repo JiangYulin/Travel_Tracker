@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/jquery.js', type="text/javascript")
+    script(src='/javascripts/global.js', type="text/javascript")
+    script(src="", type="text/javascript", id="temp_js")
+    meta(name="viewport", content="width=device-width, initial-scale=1,user-scalable=no")
+
+  body
+    div(data-role="notification-rape", id="notification-rape")
+      div(data-role="notification",id="notification")
+        h4(id="noti-title")
+        p(id="noti-content")
+    div(data-role="page",class="page")
+        div(data-role="main", class="main active", id="active")
+            block content
+    //div(data-role="footer",class="footer")

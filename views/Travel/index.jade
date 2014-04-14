@@ -1,0 +1,47 @@
+//Created by jiangyulin on 14-1-20.
+extends ../layout/layout_desktop
+
+block content
+    #main
+        #data_container
+            //用作后台输出数据的呈现
+            if(data)
+                each val in data
+                    .item
+                        .item_img
+                            img(href='#')
+                        .data_wrap
+                            .data_wrap_t
+                                a.data_wrap_c(href='#')
+                            .data_title_wrap
+                                span #{val.title}
+                            .travel_data_wrap
+                                if(hasTravelCover)
+                                   img.travel_image
+                                p.travel_des #{val.describe}
+                            .data_detial
+                                ul
+                                    li.liked
+                                    li.comments
+                                    li.start_time
+                                        span.datalist #{val.startTime}
+        #personal_operate
+            #personal_info
+                //判断后台数据, 判断当前用户是否有活动的项目(旅程),从而决定页面的显示样
+            if(hasActiveTravel)
+                //如果有
+                #operate
+                    #active_travel_title
+                        span(class="title" ) activeTravelTitle
+                    ul.operate_wrap
+                        li.operate
+                            span 新的文字
+                        li.operate
+                            span 新的图片
+            else
+                //没有的话
+                #operate
+                    ul.operate_wrap
+                        li.operate
+                            a.link(href="/travel/new")
+                                span 新的旅程

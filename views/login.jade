@@ -1,0 +1,9 @@
+//extends layout
+block content
+        form(action="/login",method="POST", id="login_form")
+            input(name="username",id="username", type="text",placeholder="username")
+            input(name="password", id="password", type="password",placeholder="password")
+            button(class='btn', type="submit", id="submit") Login
+            button(class='btn href', type="button" ,id="register", href="/register") Register
+
+    script(src='/javascripts/login.js', type="text/javascript")

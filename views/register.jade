@@ -1,0 +1,10 @@
+//extends layout/layout
+block content
+        div(id="logo_wrap", )
+        form(action="/register",method="POST", id="register_form")
+            input(name="username",id="username", type="text",placeholder="username")
+            input(name="password", id="password", type="password",placeholder="password")
+            input(name="repeat-password", id="re-password", type="password", placeholder="repeat password")
+            input(name="email", id="email", type="e-mail", placeholder="E-mail")
+            button(class='btn', id="register") Register
+        script(src="/javascripts/md5.js", type="text/javascript" )
