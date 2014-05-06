@@ -32,6 +32,8 @@ exports.login = function(req,res) {
         }
         if(doc){
             req.session.username = doc.username;
+            console.log("用户ID类型:"+typeof(doc._id))
+            /*存储后，user_id的类型变为String*/
             req.session.user_id  = doc._id;
             console.log("user:"+req.session.username + " has logged in");
             res.send({

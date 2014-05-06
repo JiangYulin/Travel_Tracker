@@ -19,12 +19,14 @@ block content
                                 if(hasTravelCover)
                                    img.travel_image
                                 p.travel_des #{val.describe}
-                            .data_detial
+                            .data_detail
                                 ul
                                     li.liked
                                     li.comments
                                     li.start_time
                                         span.datalist #{val.startTime}
+                                    li
+                                        a(href="/travel/edit/#{val._id}") edit
         #personal_operate
             #personal_info
                 //判断后台数据, 判断当前用户是否有活动的项目(旅程),从而决定页面的显示样

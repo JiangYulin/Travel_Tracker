@@ -10,5 +10,8 @@
  */
 
 exports.index = function(req, res) {
-    return res.render("Travel/edit");
+    return res.render("Travel/edit",{
+        'travelID':req.params.travelID,
+        'title': "丰富你的旅行日志"
+    })
 }

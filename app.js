@@ -15,6 +15,7 @@
     var test = require('./routes/test');
     var travel = require('./routes/travel/travel');
     var edit    = require('./routes/travel/edit');
+    var photo = require('./routes/travel/photo')
 
     /*
     自定义的外部变量
@@ -80,7 +81,8 @@
     app.get('/travel/new', travel.new);
     app.post('/travel/new', travel.new_post);
     app.get('/travel/list', travel.list);
-    app.get('/travel/edit', edit.index);
+    app.get('/travel/edit/:travelID', edit.index);
+    app.post('/:travelID/photo/upload', photo.upload);
     app.get('/logout', login.logout);
 
     /*

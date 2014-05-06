@@ -5,6 +5,8 @@ var config = require("./../db_config");
     GridStore = config.mongoose.mongo.GridStore;
 
 var db = config.db.db;
+var path = require('path');
+
 exports.writeFile = function (filepath, options, fn) {
     if (typeof options == 'function') {
         fn = options;

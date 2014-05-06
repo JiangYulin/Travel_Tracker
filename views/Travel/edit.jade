@@ -1,22 +1,14 @@
 //Created by jiangyulin on 14-1-24.
-extends ../layout/layout_m
+extends ../layout/layout_desktop
 block content
-    div(class="edit-wrap" )
-        h3(class="travel-edit-title" ) 这里是标题
-        hr(class="slash" )
-        ul(id="actions" )
-            li(class="action", id="action-add-photo")
-                span(class="action-icon")
-            li(class="action", id="action-change-status")
-                span(class="action-icon")
-            li(class="action" )
-            li(class="action" )
-            li(class="action" )
-    div(class="display-wrap")
-        ul(class="display-container" )
-            li(class="photo-wrap")
-                div(class="photo")
-                    img(class="photo-img")
-                    p(class="photo-describe")
-
-    script(src="/javascripts/travel/edit.js" type="text/javascripts")
+    #main
+        #data_container
+            div.item
+                image(src='/data/53677cb4b7288c0323000017')
+        #personal_operate
+            div.custom-input
+                span 添加图片
+                form(name='upload', enctype="multipart/form-data", method="post")
+                    input#addphoto(type='file', name='photo')
+                    input#travelID(type='hidden',value= "#{travelID}")
+    script(src="/javascripts/travel_edit.js", type="text/javascript")

@@ -3,6 +3,7 @@
  */
 var TravelModel = require("./../../model/travel");
 var User        = require("./../../model/user");
+var mongoose = require("./../../db_config").mongoose;
 /*
 创建旅行路线
  */
@@ -72,14 +73,11 @@ exports.list = function(req, res) {
             "MSG" : "No User has login"
         })
     }
+    console.log(typeof req.session.user_id)
+    console.log(mongoose.Types.ObjectId(req.session.user_id))
     TravelModel.find(
         {
-            'user_id':req.session.user_id
-        },
-        {
-            'sort': 'startTime',
-            'limit': 10,
-            'skip' : 0
+            'user_id': mongoose.Types.ObjectId(req.session.user_id)
         },
         function(err, docs) {
         //这里是查询数据库，向前台发送多个查询到的travel，
