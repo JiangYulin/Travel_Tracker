@@ -83,6 +83,7 @@
     app.get('/travel/list', travel.list);
     app.get('/travel/edit/:travelID', edit.index);
     app.post('/:travelID/photo/upload', photo.upload);
+    app.post('/:travelID/:photoID/delete', photo.delete);
     app.get('/logout', login.logout);
 
     /*

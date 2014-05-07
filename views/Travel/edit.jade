@@ -3,8 +3,11 @@ extends ../layout/layout_desktop
 block content
     #main
         #data_container
-            div.item
-                image(src='/data/53677cb4b7288c0323000017')
+            if (data)
+                each item in data
+                    div.new_photo_container(id = '#{item.photo_id}')
+                        div.delete_action(onclick="delete_action('#{travelID}','#{item.photo_id}');") X
+                        image(src='/data/#{item.photo_id}')
         #personal_operate
             div.custom-input
                 span 添加图片

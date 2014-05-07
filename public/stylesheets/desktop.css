@@ -220,19 +220,37 @@ hr {
     left:0;
 }
 
-.item {
+.new_photo_container {
+    float: left;
+    width: 30%;
+    transition: all 0.5s ease-in;
+    position: relative;
     margin-left:10px;
     margin-right: 10px;
-    height: 200px;
+    height: auto;
     padding: 0;
     overflow: hidden;
     border: 0;
+    margin-bottom: 10px;
 }
-.item:hover {
+.new_photo_container:hover {
     box-shadow: 0px 0px 5px;
 }
-.item img {
-    margin-top:-300px;
-    width: inherit;
+
+.delete_action {
+    background: lightblue;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+.delete_action:hover {
+    background: orangered;
+    color: #ffffff;
+    cursor: pointer;
+}
+.new_photo_container img {
+    width: 100%;
     border: none;
+    float: left;
 }

@@ -3,6 +3,7 @@
  */
 
 var config = require("./../db_config.js");
+var file   = require("./file");
 
 var Item = config.mongoose.Schema({
     /*
@@ -19,4 +20,33 @@ var Item = config.mongoose.Schema({
     "describe": String
 });
 
-module.exports = config.mongoose.model('item', Item);
+var Item_Model = config.mongoose.model('item', Item);
+
+module.exports = Item_Model;
+
+Item_Model.get = function(con, callback) {
+    Item_Model.find(
+        con,
+        function(err, data) {
+            callback(err, data);
+        }
+    )
+}
+
+Item_Model.delete = function(photo_id, callback) {
+   Item_Model.remove({'photo_id':photo_id}, function(err, data) {
+       if(err) {
+           callback(err);
+       }
+       else {
+           file.deleteFile(photo_id, function(err, result) {
+               if(err) {
+                   callback(err);
+               }
+               else {
+                   callback(null, result);
+               }
+           });
+       }
+   });
+}

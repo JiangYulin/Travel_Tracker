@@ -7,9 +7,9 @@ var config = require("./../db_config");
 var db = config.db.db;
 var path = require('path');
 
-exports.writeFile = function (filepath, options, fn) {
+exports.writeFile = function (filepath, options, callback) {
     if (typeof options == 'function') {
-        fn = options;
+        callback = options;
         options = {};
     }
 
@@ -23,19 +23,19 @@ exports.writeFile = function (filepath, options, fn) {
     var gs = new GridStore(db, filename, 'w', options);
     gs.open(function (err, gs) {
         if (err) {
-            return fn(err);
+            return callback(err);
         }
 
         gs.writeFile(filepath, function (err, result) {
             gs.close();
             if (err) {
-                return fn(err);
+                return callback(err);
             }
             /*输出插入的识别id
 
              */
             console.log("插入文件id编号："+result.fileId);
-            fn(null, result);
+            callback(null, result);
             /*
             result 的数据格式
             readFile 函数需要使用result.fileId 参数
@@ -47,14 +47,14 @@ exports.writeFile = function (filepath, options, fn) {
         /*
         ObjID为String类型,需要认为转换.
          */
-exports.readFile = function(id, fn) {
+exports.readFile = function(id, callback) {
     var ObjID = config.mongoose.Types.ObjectId(id);
     GridStore.read(db,  ObjID, function(err, fileData) {
         if(err) {
-            fn(err)
+            callback(err)
         }
         else {
-            fn(null, fileData);
+            callback(null, fileData);
             /*
             fileData 为buffer 数据，
             需要特定的处理方法
@@ -62,4 +62,16 @@ exports.readFile = function(id, fn) {
         }
         //db.close();
 })
+}
+exports.deleteFile = function(id, callback){
+    console.log('Deleting GridFile '+id);
+    var id = new config.mongoose.mongo.BSONPure.ObjectID(id),
+        store = new GridStore(db, id, 'r', {root: 'fs'});
+
+    store.unlink(function(err, result){
+        if (err)
+            return callback(err);
+
+        return callback(null, result);
+    });
 }

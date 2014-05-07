@@ -1,17 +1,31 @@
 /**
  * Created by jiangyulin on 14-1-24.
- * function： used for upload your photos,
- *            change your describe,
- *            mark it's status,
- *            etc.
- * rules   :  user mast mark status as "0"(start) to start track,
- *            ...
+ * function：
+ * rules   :
  *
  */
 
+var Item = require("../../model/item");
+var mongoose = require("./../../db_config").mongoose;
+
 exports.index = function(req, res) {
-    return res.render("Travel/edit",{
-        'travelID':req.params.travelID,
-        'title': "丰富你的旅行日志"
-    })
+    /*
+    获取已有图片数据
+     */
+    Item.get({
+        'travel_id': mongoose.Types.ObjectId(req.params.travelID)
+    },
+        function(err, data) {
+            if(data) {
+                console.log(data);
+                res.render("Travel/edit",
+                    {
+                        'title': '丰富你的旅行日志',
+                        'travelID': req.params.travelID,
+                        'data':data
+                    })
+            }
+        }
+    )
+
 }
