@@ -9,41 +9,35 @@ block content
                 each val in data
                     .item
                         .item_img
-                            img(href='#')
-                        .data_wrap
-                            .data_wrap_t
-                                a.data_wrap_c(href='#')
-                            .data_title_wrap
-                                span #{val.title}
-                            .travel_data_wrap
-                                if(hasTravelCover)
-                                   img.travel_image
-                                p.travel_des #{val.describe}
-                            .data_detail
-                                ul
-                                    li.liked
-                                    li.comments
-                                    li.start_time
-                                        span.datalist #{val.startTime}
-                                    li
-                                        a(href="/travel/edit/#{val._id}") edit
-        #personal_operate
-            #personal_info
-                //判断后台数据, 判断当前用户是否有活动的项目(旅程),从而决定页面的显示样
-            if(hasActiveTravel)
-                //如果有
-                #operate
-                    #active_travel_title
-                        span(class="title" ) activeTravelTitle
-                    ul.operate_wrap
-                        li.operate
-                            span 新的文字
-                        li.operate
-                            span 新的图片
-            else
-                //没有的话
+                            img(src='/user/#{val.user_id}')
+                        .data_wrap_container
+                            .data_wrap
+                                .data_wrap_t
+                                    a.data_wrap_c(href='#')
+                                .data_title_wrap
+                                    span
+                                        a(href="/travel/show/#{val._id}") #{val.title}
+                                .travel_data_wrap
+                                    img.travel_image(src='/travel/cover/#{val._id}')
+                                    p.travel_des #{val.describe}
+                                .data_detail_container
+                                    ul.data_detail
+                                        li.start_time
+                                            span.date #{val.startTime}
+                                        li.liked
+                                            a.btn-like 喜欢
+                                        li.comments
+                                            a.btn-commit 回复
+
+                                        li
+                                            button.href.float-right.btn(href="/travel/upload/#{val._id}") 上传
+                                            button.delete-btn.btn.float-right(travel_id = "#{val._id}") 删除
+                                            button.href.btn.float-right(href="/travel/edit/#{val._id}") 编辑
+        #right_data_container
+            #personal_operate
                 #operate
                     ul.operate_wrap
                         li.operate
                             a.link(href="/travel/new")
                                 span 新的旅程
+        script(src="/javascripts/travel/index.js", type="text/javascript")

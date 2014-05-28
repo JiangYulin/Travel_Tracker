@@ -1,17 +1,31 @@
 //Created by jiangyulin on 14-1-24.
 extends ../layout/layout_desktop
 block content
+
     #main
-        #data_container
-            if (data)
-                each item in data
-                    div.new_photo_container(id = '#{item.photo_id}')
-                        div.delete_action(onclick="delete_action('#{travelID}','#{item.photo_id}');") X
-                        image(src='/data/#{item.photo_id}')
-        #personal_operate
-            div.custom-input
-                span 添加图片
-                form(name='upload', enctype="multipart/form-data", method="post")
-                    input#addphoto(type='file', name='photo')
-                    input#travelID(type='hidden',value= "#{travelID}")
-    script(src="/javascripts/travel_edit.js", type="text/javascript")
+            #edit_zone
+                div.from-header
+                    h5 为这张照片添加介绍
+                hr
+            #div_new_image_container
+                ._intro.float-left
+                    h2.title 上传你旅程中的图片
+                    .explain
+                        p 在旅行的过程中上传你的图片
+                        p 点击图片添加图片描述
+                        p 鼠标划过图片，有更多操作
+                ._edit_container.float-right
+                    button.big-btn.btn 发状态
+                    form#photo-form(name='upload', enctype="multipart/form-data", method="post")
+                        div.input_file
+                            button.highlight.btn 添加图片
+                            input#addphoto(type='file', name='photo')
+                        input#travelID(type='hidden',value= "#{travelID}")
+                hr.float-left
+
+                #div_new_image
+
+            button#upload_next.big-btn.btn.href.float-right(href="/travel/edit/#{travelID}") 编辑图片信息
+
+
+    script(src="/javascripts/travel_upload.js", type="text/javascript")

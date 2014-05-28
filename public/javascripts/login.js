@@ -13,7 +13,7 @@ $('#submit').click(function(event){
                 //do something
                 if(response.status == 0) {
                     showMessage({title:"登录成功",msg:"准备跳转",ms:1000});
-                    setTimeout(function(){window.location.href = "/travel/list"},1000)
+                    setTimeout(function(){window.location.href = $("#request_url").val();},1000)
                 }
                 else
                     showMessage({title:"出现错误", msg:response.MSG, ms:1000});

@@ -1,0 +1,37 @@
+//Created by jiangyulin on 14-5-12.
+extends ./../layout/layout_desktop
+block content
+    #main
+        #data_container
+            div.profile-container
+                div.profile-img
+                    h4 头像
+                    hr
+                    form#change_img
+                        div.user_pic_container
+                            img#user_pic(src="/data/#{data.user_img}")
+                        ul.profile-img-detail
+                            li._info
+                                span.info_name
+                                input.info_value.info_no_edit(readonly='readonly', value="")
+                        div.input_file.float-right
+                            button.btn 更换照片
+                            input#user_img(name="user_img", type="file")
+                div.profile-detail
+                    h4 基本信息
+                    hr
+                    form#change_detail
+                        ul.profile
+                            li._info
+                                span.info_name 用户邮箱
+                                input.info_value.info_no_edit(readonly='readonly',name="email",value="#{data.email}")
+                            li._info
+                                span.info_name 昵称
+                                input.info_value.info_no_edit(readonly='readonly',name="nick_name", value="#{data.nick_name}")
+                            li._info
+                                span.info_name 所在地
+                                input.info_value.info_no_edit(readonly='readonly',name="location", value="#{data.location}")
+                        button#change-btn.make_edit.btn.float-right 修改
+                        button#cancle-btn.btn.float-right.hide 取消
+                        button#save-btn.btn.float-right.highlight.hide 保存
+        script(src="/javascripts/profile.js", type="text/javascript")

@@ -5,13 +5,18 @@
 var User = require('../model/user');
 
 exports.login_form = function(req,res) {
-    res.render('login.jade',{title:'Login'})
+    res.render('login.jade',{title:'Login',
+    request_url: "/travel/list"})
 };
 
 exports.login = function(req,res) {
 
     var username = req.body.username;
     var password = req.body.password;
+    var request_url = "/travel/list";
+    if(req.body.request_url) {
+        request_url = req.body.request_url;
+    }
     if(req.session.username){
         /*
         如果已经登录
@@ -35,10 +40,11 @@ exports.login = function(req,res) {
             console.log("用户ID类型:"+typeof(doc._id))
             /*存储后，user_id的类型变为String*/
             req.session.user_id  = doc._id;
+            req.session.nick_name = doc.nick_name;
             console.log("user:"+req.session.username + " has logged in");
             res.send({
                 "status":0,
-                "MSG": "success"
+                "MSG": "success",
             });
             //登录验证成功
 
@@ -76,7 +82,7 @@ exports.register = function(req, res) {
                });
            }
            else {
-               console.log("new user register success");
+               console.log("new User register success");
                res.send({
                    "status":"0",
                    "MSG":"success"
@@ -112,8 +118,13 @@ exports.verify = function(req, res) {
 
 exports.logout = function(req, res) {
     delete req.session.username;
+    delete req.session.user_id;
     res.send({
         "status":"0",
         "MSG":"success"
     })
+}
+
+exports.new_login = function(req, res) {
+    res.render("new_login.jade");
 }

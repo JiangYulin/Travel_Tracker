@@ -8,10 +8,20 @@ html
         script(type='text/javascript', src='/javascripts/global.js')
         meta(charset='utf-8')
     body
+        #background
         #nav
+            ul.nav-container
+                li.nav-item
+                    a 热门旅程
+                li.nav-item
+                    a(href="/travel/list") 我的旅程
+                li.nav-item
+                    a(href="/user/profile") 关于我
+                li.nav-item
+                    a 随便逛逛
 
         #container
             block content
-        #footer
+        //#footer
             ul
                 li @版权所有

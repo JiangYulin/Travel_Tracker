@@ -3,9 +3,52 @@ extends ../layout/layout_desktop
 block content
     #main
         #data_container
-            div.travel-img-container
-                img.travel-img(src="/data/536b1c09ff7db4d514000015")
-                div.travel-img-describe
-                    p 描述的文字在飞机上呼呼大睡，快到了终于能看见马耳他这个在地中海上的黄土小国。下飞机之后一场雷阵雨彻底浇灭了我的激情，带了一箱夏天纱纱裙子的我该怎么办
-                div.travel-img-container-detail
-                    p
+            #travel_info
+                div.avtar-container
+                    img.avtar(src="/user/#{travel.user_id}")
+                div.travel-detail
+                    h2.travel_title #{travel.title}
+                    p.travel_describe #{travel.describe}
+                    span.data
+            #show_container
+                if(data)
+                    each item in data
+                        div.travel-img-container(id='#{item.photo_id}')
+                            img.travel-img(src="/data/#{item.photo_id}")
+                            div.travel-img-describe
+                                p #{item.describe}
+                            div.travel-img-container-detail
+                                if(item.location_id)
+                                    span.float-left.position(location_id='#{item.location_id}')
+                                if(item.createDate)
+                                    span.date.float-left.display-inline #{item.createDate}
+                                ul.travel-img-container-btns.display-inline
+                                     li
+                                        a.btn-like() 喜欢
+                                     li
+                                        a.btn-commit() 评论
+                            div.travel-img-comments-container
+                                ul.travel-img-comments
+                                div.travel-img-comment-form-container
+                                    hr
+
+                                    form.travel-img-comment-form
+                                        div.hide.reply_name_item
+                                            span 面包牛奶牙膏
+                                            div.delete_user.delete_icon
+                                        input(name="to_user_id", type="hidden", readonly="readonly")
+                                        input(name="to_user_nick_name", type="hidden", readonly="readonly")
+                                        textarea.form-contents(name="contents")
+                                        button.form-submit.highlight(type="submit",value="") 提交
+        #right_data_container
+            .personal_operate
+                ul.operate_wrap
+                    li.operate
+                        a.link(href="/travel/upload/#{travel._id}")
+                            span 上传新图片
+                    li.operate
+                        a.link(href="/travel/edit/#{travel._id}")
+                            span 编辑
+
+
+    script(type='text/javascript', src="/javascripts/travel_show.js")

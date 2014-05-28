@@ -10,7 +10,10 @@ var User =config.mongoose.Schema({
     'username':String,
     'password':String,
     'email':String,
-    'travelID': config.mongoose.Schema.ObjectId,
+    'nick_name': String,
+    'user_img' :config.mongoose.Schema.ObjectId,
+    'introduce': String,
+    'location' : String,
     'user_photo':config.mongoose.Schema.ObjectId
         /*
 

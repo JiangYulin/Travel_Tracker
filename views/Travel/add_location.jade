@@ -1,0 +1,69 @@
+//Created by jiangyulin on 14-5-24.
+extends ../layout/layout_desktop
+block content
+
+    #main
+            #edit_zone
+                div.from-header
+                    h5 为这张照片添加介绍
+
+                hr
+                form#edit_form
+                    input(type='hidden', id='edit_form_id',value='#', name='photo_id')
+                    textarea#desc(type='text', name='desc')
+                    button.highlight(type='submit', id='submit') 就这样了
+                    button(type='button',id='close') 关闭
+            #query_location_zone.hide
+
+                form#query_loca_form
+                    input(type='text', id="location_name" name='location_name',placeholder='请输入地点')
+                    //button.float-right.highlight(type='submit', id='sub_location') 确定
+                    div#results_container
+                        ul#results
+                        #add_location_operat.hide
+                                p#show_add_loca_form.cursor.date 没有你选择的地点？点击添加
+                #select_location_container
+                    ul#select_locations
+                    button#select_complete_btn.btn.float-right.hide 完成
+            #add_location_zone
+                form#add_loca_form
+                    input(type='text', name="location_name", placeholder='地点名称')
+                    input(type="text", name="city_name", placeholder="城市")
+                    input(type="text", name="county_name", placeholder="国家")
+                    button#add_loca_form_btn.btn.float-right 确定
+
+            #div_new_image_container
+                ._intro.float-left
+                    h2.title 第二步 为你的照片添加描述和地点
+                    .explain
+                        p 点击图片以添加图片描述
+
+                hr.float-left
+
+                #div_new_image
+                    if(data.length > 0)
+                        each item in data
+                            div.new_photo_container(id = '#{item.photo_id}',onclick="show_edit_zone(this)")
+                                div.delete_action(travel_id='#{travelID}', photo_id = '#{item.photo_id}') X
+                                image(src='/data/#{item.thumbnail_id}')
+                                div.describe_p
+                                    p.image_desc #{item.describe}
+                                div.position_container.hide
+                                    span.float-left.position
+                                    span.float-right.delete_position 删除地点
+                    else
+                        p 目前还没有上传图片，快来上传吧!
+
+                hr.float-left
+                #div_new_location_container.float-left
+                    ._edit_container.float-left
+                        form#photo-form(name='upload', enctype="multipart/form-data", method="post")
+                            button#show_query_location.highlight.btn 添加地点
+                            input#travelID(type='hidden',value= "#{travelID}")
+                    ._location_container.float-left
+
+
+            button#submit_all.float-right.highlight.big-btn.btn 整理结束，预览
+
+
+    script(src="/javascripts/travel/travel_edit.js", type="text/javascript")

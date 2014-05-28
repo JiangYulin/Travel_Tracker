@@ -7,7 +7,7 @@
         "username" : -1,
         "password" : -1,
         "re_password" : -1,
-        "email" : -1
+        "email" : -1,
     };
     //定义提交后的操作
     submit_button.onclick = function() {
@@ -57,10 +57,10 @@
         }
         xmlhttp_register.open("POST", "/register", true);
         xmlhttp_register.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xmlhttp_register.send("username="+username+"&password="+md5(password)+"&email="+email);
+        xmlhttp_register.send("username="+username+"&password="+md5(password)+"&email="+email+"nick_name="+nick_name);
     }
     //用户名验证，是否唯一
-    var username = document.getElementById("username");
+    var username = document.getElementById("r_username");
     username.onblur  = function() {
         console.log("username onblur run");
         _username = this.value;
@@ -79,9 +79,9 @@
     }
 
 //密码校验
-    var password = document.getElementById("password");
+    var password = document.getElementById("r_password");
     console.log("register.js run");
-    var re_password = document.getElementById("re-password");
+    var re_password = document.getElementById("re-r_password");
     password.onblur = function() {
             flag.re_password = -1;
             if(this.value.length >= 6) {
@@ -89,31 +89,32 @@
                 if(re_password.value.length != 0)   //当重新修改第一行密码时，进行两个密码校验
                     re_password.onblur();
                 flag.password = 0;
-                $("#password").removeClass("error");
+                $("#r_password").removeClass("error");
             }
             else {
-                $("#password").addClass("error");
+                $("#r_password").addClass("error");
                 showMessage({title: "错误", msg: "密码最小长度为6", ms: 1000});
                 flag.password = -1;
             }
         }
     re_password.onblur = function() {
         if(this.value !== password.value) {
-            $("#re-password").addClass("error");
+            $("#re-r_password").addClass("error");
             showMessage({title:"检查", msg:"两次密码输入不符", ms: 1000});
             flag.re_password = -1;
         }
         else {
-            $("#re-password").removeClass("error");
+            $("#re-r_password").removeClass("error");
             flag.re_password = 0;
         }
     }
 
 //email 校验
-    var email = document.getElementById("email");
+    var email = document.getElementById("r_email");
     email.onblur = function() {
         flag.email = 0;
     }
+
 
     var xmlhttp;
     function is_name_unique(username, callback) {

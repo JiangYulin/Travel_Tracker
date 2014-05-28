@@ -48,13 +48,20 @@ exports.writeFile = function (filepath, options, callback) {
         ObjID为String类型,需要认为转换.
          */
 exports.readFile = function(id, callback) {
-    var ObjID = config.mongoose.Types.ObjectId(id);
+    try
+    {
+        var ObjID = config.mongoose.Types.ObjectId(id);
+    }
+    catch (err)
+    {
+        return callback(err);
+    }
     GridStore.read(db,  ObjID, function(err, fileData) {
         if(err) {
-            callback(err)
+            return callback(err)
         }
         else {
-            callback(null, fileData);
+            return callback(null, fileData);
             /*
             fileData 为buffer 数据，
             需要特定的处理方法

@@ -1,0 +1,42 @@
+li.travel-img-comment
+                                        span.username 小莫
+                                        p.content 你喜欢谈及他啊原来
+                                    li.travel-img-comment
+                                        span.username 哦卡
+                                        p.content 哈哈，这个页面好漂亮啊
+                                    li.travel-img-comment
+                                        span.username 示例
+                                        p.content 无语了
+                                    li.travel-img-comment
+                                        span.username 姜
+                                        p.content 好多东西都没了，就象是遗失在风中的烟花，让我来不及说声再见就已经消逝不见。
+
+
+                     try {
+                                       new ImageExif({image : req.files.photo.path}, function(err, exifData) {
+                                           if(err) {
+                                               console.log('Error: '+err.message);
+                                           }
+                                           else {
+                                               /*
+                                               把图片的exif信息存储起来
+                                                */
+
+                                               console.log(exifData);
+                                           }
+                                       })
+                                   }
+                                   catch (err) {
+                                       console.log('Error: ' + err.message);
+                                   }
+                                   finally {
+                                       /*
+                                       这里就不try了
+                                        */
+                                       fs.unlink(req.files.photo.path, function(err) {
+
+                                       if(err) {
+                                           console.warn('file delete failed');
+                                       }
+                                   })
+                                   }

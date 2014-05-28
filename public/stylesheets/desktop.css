@@ -2,11 +2,30 @@ html {
     overflow:hidden;
     overflow-y: scroll;
 }
+span {
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: gray;
+}
 body {
     text-align: center;
-    background-color: #ededef;
+    background-color: #f4f4f4;
+    position: absolute;
     width: 100%;
-    font-family: font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑",tahoma,arial,simsun,"宋体";
+    min-height: 100%;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑","tahoma","arial,simsun","宋体";
+}
+.cursor:hover {
+    cursor: pointer;
+}
+#background {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0,0,0, 0.6);
+    display: none;
+    z-index: 2;
 }
 textarea {
 font-family: inherit;
@@ -17,66 +36,140 @@ font-family: inherit;
     margin:0;
     padding:0;
 }
+.float-right {
+    float: right;
+}
+.float-left {
+    float: left;
+}
 a {
     text-decoration: none;
     color: #000000;
+}
+a:hover {
+    cursor: pointer;
 }
 ul {
     list-style: none;
 }
 
+.delete_icon {
+    width: 18px;
+    height: 18px;
+    float: right;
+    background: url("/images/trip_detail_icons.png") no-repeat -26px 1px;
+}
+
+.delete_icon:hover {
+    background: url("/images/trip_detail_icons.png") no-repeat 2px 1px;
+}
+
 #nav {
-    width:100%;
+    position: relative;
+    margin: 0 auto;
     height: 70px;
+    width: auto;
     background-color: lightskyblue;
 }
 
+.nav-container {
+    overflow: hidden;
+    width: 600px;
+    height: 70px;
+    margin: 0 auto;
+}
+.nav-container li {
+    float: left;
+    display: inline;
+    height: 100%;
+}
+.nav-item a {
+    float: left;
+    height: 70px;
+    line-height: 70px;
+    padding: 0 20px;
+    color: #ffffff;
+}
+.nav-container li:hover {
+    background: deepskyblue;
+}
+
 #footer {
+    margin-top: 100px;
     width: 100%;
-    height: auto;
-    color: darkgray;
-    position: fixed;
-    bottom: 10px;
+    height: 200px;
+    color: lightskyblue;
+    background: lightskyblue;
+    position: relative;
+    float: left;
 }
 
     /*
     表单统一规范
     */
 form input {
+    margin-bottom: 10px;
     width: 99%;
     height: 30px;
     border: 1px solid lightgrey;
+}
+
+form .file {
+
 }
 form textarea {
     width: 99%;
     height: 80px;
     resize: none;
     border: 1px solid lightgrey;
+    font-size: 12px;
     margin-top: 5px;
+    margin-bottom: 5px;
+    color: #707070;
 }
-form button {
-    width: 99%;
+button {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+    min-width: 60px;
     height: 30px;
-    background-color: rgba(255,255,255,1);
+    background-color: rgb(155, 181, 185);
     line-height: 30px;
     border: 1px solid lightgrey;
+    margin-right: 10px;
+    color: white
 }
-form button:hover {
-   background-color: #000000;
+button.highlight {
+    background: rgb(61, 227, 217);
+}
+button:hover {
+   background-color: #80edeb;
+    cursor: pointer;
    color: #ffffff;
+}
+.hide {
+    display: none;
 }
 #main {
     width: 928px;
     height: auto;
     min-width: 928px;
-    margin:30px auto;
     position: relative;
-    overflow: hidden;
+    margin:30px auto;
 }
-#personal_operate {
+#right_data_container {
     width: 230px;
+    height: auto;
     float: right;
     text-align: center;
+    position: relative;
+}
+.personal_operate {
+    background-color: white;
+    box-shadow: 0 0 3px lightgray;
+    border-radius: 3px;
+    position: relative;
+    width: inherit;
 }
 #personal_info {
     height: 200px;
@@ -85,6 +178,10 @@ form button:hover {
     background: rgba(255, 255, 255, 0.8) url('');
     background-size: cover;
     border-radius: 3px;
+}
+
+.operate_wrap {
+    overflow: hidden;
 }
 .operate {
     width: 90%;
@@ -119,6 +216,11 @@ form button:hover {
     */
     height: 40px;
 }
+.operate:hover {
+    border-color: lightskyblue;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px lightskyblue;
+}
 .link span {
     line-height: 40px;
 }
@@ -129,10 +231,9 @@ form button:hover {
 
 #data_container {
     float: left;
-    width: 674px;
-    padding-top: 10px;
+    width: 664px;
     text-align: left;
-    margin-bottom: 30px;
+    margin-bottom: 100px;
     position: relative;
 }
 .item {
@@ -140,27 +241,62 @@ form button:hover {
     width: 100%;
     padding: 10px;
     margin-bottom:30px;
-} .item_img { border: 1px solid rgba(0,0,0,0.2); float: left; width: 60px; height: 60px; } .data_wrap { border: 1px solid rgba(0,0,0,0.2); float: right; width: 80%; padding: 10px; } .data_title_wrap { padding-top:3px; padding-bottom: 3px; height: 40px; } .data_title_wrap span { line-height: 40px; font-style: italic; font-size:15px; color: gray; font-weight: bold; }
+}
+.item_img { border: 1px solid rgba(0,0,0,0.2); float: left; width: 60px; height: 60px; overflow: hidden}
+.item_img img{
+    width: inherit;
+}
+.data_wrap_container {
+    background: white;
+    padding: 10px;
+    float: right;
+    width: 80%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+}
+.data_wrap {
+    background: rgba(255,255,255,0.8);
+    float: right;
+    overflow: hidden;
+    width: 100%;
+}
+.data_title_wrap {
+    margin-left: 10px;
+    padding-top:3px; padding-bottom: 3px; height: 40px;
+}
+.data_title_wrap span { line-height: 40px; font-style: normal; font-size:15px; color: black; font-weight: normal; }
+
 .travel_data_wrap {
+    margin: 10px;
+    width: auto;
     height: auto;
     overflow: hidden;
-    margin-bottom: 10px;
 }
 .travel_data_wrap img{
-    width: 30%;
-    height: 100px;
+    width: 100px;
     float: left;
     border-width: 0;
-    margin: 10px 10px;
 
 }
 .travel_data_wrap p {
+    width: 100%;
+    font-size: 14px;
+    color: gray;
     float: left;
     margin-top:10px;
 }
 
 .data_detail {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    float: left;
+    width: 100%;
 }
+.data_detail li {
+    display: inline;
+    margin-right: 10px;
+}
+
 
 /*
  创建旅途的相关css
@@ -169,8 +305,9 @@ form button:hover {
 .container {
     padding: 25px;
     background-color: white;
+    border: 1px solid lightblue;
 }
-.new_travel_intro {
+._intro {
     text-align: left;
 }
 .title {
@@ -178,16 +315,17 @@ form button:hover {
     margin-bottom: 20px;
 }
 
-.new_travel_explain p{
+.explain p{
     color: gray;
     font-size: 13px;
     margin-bottom: 5px;
 }
-.new_travel_explain {
+.explain {
     margin-bottom: 20px;
 }
 
 hr {
+    width:100%;
     margin-top:10px;
     margin-bottom: 10px;
 }
@@ -219,22 +357,44 @@ hr {
     position: absolute;
     left:0;
 }
-
-.new_photo_container {
+#div_new_image_container {
+    width: 100%;
+    border: 1px solid lightskyblue;
+    background: white;
+    min-height: 400px;
+    padding: 25px;
     float: left;
-    width: 30%;
-    transition: all 0.5s ease-in;
+    margin-bottom: 10px;
+}
+#div_new_image {
+    float: left;
+}
+.new_photo_container {
+
+    float: left;
+    width: 170px;
     position: relative;
     margin-left:10px;
     margin-right: 10px;
     height: auto;
-    padding: 0;
+    padding: 0px;
     overflow: hidden;
-    border: 0;
+    border: 10px solid #ffffff;
     margin-bottom: 10px;
+    box-shadow: 0px 0px 2px;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
 }
 .new_photo_container:hover {
-    box-shadow: 0px 0px 5px;
+    box-shadow: 0px 0px 6px;
+}
+.new_photo_container:hover .delete_action {
+    display: block;
+}
+
+#photo-form {
+    width: auto;
+    float: left;
 }
 
 .delete_action {
@@ -242,7 +402,9 @@ hr {
     position: absolute;
     width: 20px;
     height: 20px;
+    right: 0;
     text-align: center;
+    display: none;
 }
 .delete_action:hover {
     background: orangered;
@@ -253,4 +415,526 @@ hr {
     width: 100%;
     border: none;
     float: left;
+}
+.new_photo_container .describe_p {
+    margin-top: 0px;
+    background: rgba(255, 255, 255, 1);
+    color: gray;
+    border-top: 1px solid lightskyblue;
+    float: left;
+    width: 100%;
+    transition: all 0.5s;
+
+}
+.describe_p p {
+    font-size: 12px;
+    text-align: left;
+    margin: 1px;
+}
+
+.position {
+    font-size: 13px;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 10px;
+    margin-right: 10px;
+    background: url("/images/trip_icons.png") no-repeat 0px -34px;
+}
+.delete_position {
+}
+.delete_position:hover {
+    color: red;
+    cursor: pointer;
+}
+/*
+    为相片添加描述的框框
+*/
+#edit_zone {
+    background: rgba(255,255,255,1);
+    position: absolute;
+    z-index: 5;
+    box-shadow: 2px 2px 5px lightblue;
+    left: 300px;
+    display: none;
+}
+#edit_zone .from-header {
+    margin-left: -23px;
+    padding-left: 23px;
+    background: url("/images/isay.png") no-repeat 0px -1px;
+    border-width: 0;
+    padding-top: 10px;
+}
+#edit_zone .from-header h5 {
+    text-align: left;
+    color: lightblue;
+    margin-left: 20px;
+
+}
+#edit_zone hr {
+    border-color: lightblue;
+    border-style: solid;
+}
+#edit_form {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+#edit_form textarea {
+    background: none;
+    width: 300px;
+    border:1px solid lightblue ;
+    height: 100px;
+    display: block;
+}
+
+/*
+    添加地理位置
+*/
+
+#div_new_location_container {
+    margin: 10px 0;
+    width: 100%;
+
+}
+._location_container {
+    padding-top:10px;
+    width: 100%;
+    border-radius: 3px;
+    min-height: 100px;
+}
+
+.location {
+    width:120px;
+    border: 1px dotted lightgray;
+    height: 150px;
+    background: #ffffff;
+    float: left;
+}
+.location .loca_img {
+    font-size: 55px;
+    width: 120px;
+    height: 120px;
+    border-bottom: 1px solid lightgray;
+    background-size: cover;
+}
+
+.loca_img .count {
+    font-size: 55px;
+    opacity: 0.7;
+    color: black;
+}
+
+.location .loca_span {
+    font-size: 13px;
+    line-height: inherit;
+}
+
+#query_location_zone {
+    box-shadow: 0px 0px 1px black;
+    position: absolute;
+    width: 400px;
+    height: auto;
+    padding: 20px;
+    background: #ffffff;
+    z-index: 3;
+    left: 50%;
+    margin-left: -200px;
+}
+
+
+#query_location_zone input {
+    margin-bottom: 20px;
+}
+
+#results_container {
+    margin-top: -20px;
+    height: auto;
+    margin-left: 1px;
+    width: 397px;
+    background: #ffffff;
+    position: absolute;
+    border: 1px solid lightskyblue;
+    border-top-width: 0;
+}
+/*
+    ajax 请求结果部分
+*/
+#results {
+
+}
+.location_item {
+    height: 25px;
+    color: gray;
+
+}
+
+.location_item:hover {
+    background: lightblue;
+    color: white;
+
+
+}
+
+.location_item span {
+    line-height: 25px;
+    font-size: 13px;
+    float: left;
+    margin-right: 10px;
+}
+
+#select_location_container {
+    border-top: 1px solid lightskyblue;
+    float: left;
+    width: 100%;
+}
+
+#select_locations {
+    width: 100%;
+    float: left;
+}
+
+#select_locations .location_item {
+    float: left;
+    width: 100%;
+    color: gray;
+    font-size: 13px;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid lightskyblue;
+}
+
+#select_locations .location_item span{
+    height: 35px;
+    line-height: 35px;
+}
+
+/*
+    添加地点的表单
+*/
+
+#add_location_zone {
+    padding: 20px;
+    width: 300px;
+    z-index: 10;
+    position: absolute;
+    background: white;
+    left: 100%;
+    margin-left: -100px;
+    opacity: 0;
+
+}
+
+
+
+
+/*
+    show.jade 页面相关css
+*/
+#travel_info {
+    width: inherit;
+    height: auto;
+    background: white;
+    border: 1px solid lightblue;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+.avtar-container {
+    float: left;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+}
+.avtar-container img{
+    width: 100%;
+}
+.travel-detail {
+    float: left;
+    margin-left: 50px;
+    margin-top: 5px;
+}
+.travel_title {
+    font-style: normal;
+    font-weight: normal;
+    color: rgba(92,92,92);
+}
+.travel_describe {
+    margin-top: 4px;
+    font-size: 13px;
+    color: gray;
+}
+
+.travel_info_fixed {
+
+    position: fixed;
+    top: 0px;
+    z-index: 10;
+}
+
+#show_container {
+    padding-left: 120px;
+}
+.travel-img-container {
+    border: 1px solid lightgray;
+    margin-bottom: 30px;
+}
+
+.travel-img-container .travel-img {
+    width: 100%;
+}
+
+.travel-img-container .travel-img-describe {
+    margin: 8px;
+}
+
+.travel-img-container .travel-img-container-detail {
+    text-align: right;
+    margin: 5px 8px;
+    position: relative;
+    border-top: 1px solid lightblue;
+    padding-top: 5px;
+}
+.travel-img-container .display-inline {
+    display: inline;
+}
+.display-inline {
+    display: inline;
+}
+.travel-img-container-btns {
+}
+.travel-img-container-btns li {
+    display: inline;
+    margin-left: 10px;
+}
+.date {
+    font-size: 13px;
+    color: gray;
+    display: block;
+}
+
+.btn-like {
+    color: gray;
+    font-size: 13px;
+    padding-left: 18px;
+    background: url("/images/trip_detail_icons.png") no-repeat -55px 2px;
+}
+
+.btn-liked {
+    background: url("/images/trip_icons.png") no-repeat 0px -70px;
+}
+.btn-commit {
+    font-size: 13px;
+    color: gray;
+    padding-left: 18px;
+    background: url("/images/trip_icons.png") no-repeat 0 -51px;
+}
+
+.reply_name_item {
+    float: left;
+    border-radius: 3px;
+    width: auto;
+    background: #ffffff;
+    color: lightskyblue;
+    font-size: 11px;
+    padding: 3px;
+}
+
+/*
+    show.jade
+    留言回复部分
+*/
+
+.travel-img-comments-container {
+    display: none;
+    padding: 10px;
+}
+
+.travel-img-comments {
+
+    border-top: 1px solid lightseagreen;
+    padding: 10px;
+
+
+}
+
+.travel-img-comment {
+
+    border-bottom: 1px dotted lightblue;
+    margin-top: 5px;
+
+}
+
+.travel-img-comment .username {
+    color: lightskyblue;
+    font-size: 13px;
+}
+.travel-img-comment .content {
+    font-size: 13px;
+    color: gray;
+}
+
+.travel-img-comment-form-container {
+
+}
+
+.travel-img-comment-form {
+
+}
+
+/*
+    user 部分
+    profile.jade
+
+*/
+
+.profile-img {
+    margin-bottom: 30px;
+    float: left;
+    width: 100%;
+}
+
+.profile-img-detail {
+    width: auto;
+    margin-top: 30px;
+}
+
+.profile-container {
+    overflow: hidden;
+    border: 1px solid lightblue;
+    padding: 20px;
+    background: #ffffff;
+}
+
+.profile-container h4 {
+    width: auto;
+}
+.profile {
+    margin-top: 30px;
+}
+._info {
+    font-size: 14px;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted lightblue;
+}
+
+.info_name {
+    color: gray;
+    float: left;
+    width: 30%;
+    line-height: 32px;
+    margin-left: 20px;
+}
+
+.info_value {
+    width: 40%;
+}
+
+.info_no_edit {
+    border-color: rgba(0,0,0, 0);
+}
+
+
+.user_pic_container {
+    height: 100px;
+    width: 100px;
+    float: left;
+}
+.user_pic_container img {
+    height: 100px;
+    margin-bottom: 0px;
+    border: 0 solid lightblue;
+}
+/*
+更换图片区域
+*/
+.input_file {
+    width: auto;
+    float: left;
+    overflow: hidden;
+}
+
+.input_file input {
+    height: 28px;
+    width: 75px;
+    opacity: 0;
+}
+
+.input_file .btn {
+    position: absolute;
+    overflow: hidden;
+    width: auto;
+}
+
+
+/*
+图片拖拽效果
+*/
+
+.ondrag {
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    opacity: 0.8;
+}
+
+.unselectable {
+    /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+    /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+    -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+    -webkit-user-select: none;
+    -ms-user-select: none; /* From IE10 only */
+    user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+    -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+    user-drag: none;
+}
+
+
+/*
+    login
+    表单部分
+*/
+#web_login {
+
+    width: 300px;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    left:60%;
+    top:30%;
+    position: absolute;
+}
+
+#login_page {
+    background-image:url("/images/bg.jpg");
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#login_register a {
+    margin: 10px;
+}
+
+/*通知区域*/
+#notification-rape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: -3.5em 0 auto;
+}
+#notification {
+    top:9em;
+    width: 10em;
+    height: auto;
+    position:  relative;
+    z-index: 100;
+    border: 0.1em solid black;
+    border-radius: 0.3em;
+    margin: 0 auto;
+    padding: 0.3em;
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    opacity: 0;
 }

@@ -7,16 +7,17 @@ var file   = require("./file");
 
 var Item = config.mongoose.Schema({
     /*
-     title:      路线标题
-     status;     是否结束 -1:未开始,0:正在进行,1:已经结束
-     startTime:  开始时间（自动生成）
-     endTime:    结束时间
-     describe:   描述
+     photo_id: photo_id为文件存储在gridfs中的fileId
+     describe:   图片描述
      */
     "user_id": config.mongoose.Schema.ObjectId,
     "travel_id": config.mongoose.Schema.ObjectId,
     "photo_id": config.mongoose.Schema.ObjectId,
-    "title":    String,
+    "thumbnail_id": config.mongoose.Schema.ObjectId,
+    "location_id": config.mongoose.Schema.ObjectId,
+    "gps" : Object,
+    "createDate" : Date,
+    "uploadDate": Date,
     "describe": String
 });
 
@@ -34,17 +35,32 @@ Item_Model.get = function(con, callback) {
 }
 
 Item_Model.delete = function(photo_id, callback) {
-   Item_Model.remove({'photo_id':photo_id}, function(err, data) {
+   Item_Model.findOne({'photo_id':photo_id}, function(err, data) {
+       console.log(data);
        if(err) {
            callback(err);
        }
-       else {
+       if(data) {
+           /*
+           删除大图片
+            */
            file.deleteFile(photo_id, function(err, result) {
                if(err) {
                    callback(err);
                }
                else {
-                   callback(null, result);
+                   /*
+                   删除小图片
+                    */
+                   file.deleteFile(String(data.thumbnail_id), function(err, result) {
+                       if(err) {
+                           callback(err);
+                       }
+                       else {
+                           data.remove();
+                           callback(null, result);
+                       }
+                   })
                }
            });
        }
