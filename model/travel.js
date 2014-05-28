@@ -15,6 +15,7 @@ var Travel = config.mongoose.Schema({
         "user_id": config.mongoose.Schema.ObjectId,
         "title":    String,
         "status":   Number,
+        "view":     Number,
         "startTime":String,
         "endTime":  String,
         "describe": String

@@ -1,0 +1,17 @@
+extends ../layout/layout_desktop
+block content
+    #main
+        h3.float-left 热门
+        hr
+        if (data)
+            each item in data
+                a(href="/travel/show/#{item._id}")
+                    .explore_item
+                        .explore_item_img_container(style="background-image:url('/travel/cover/#{item._id}')")
+                        .explore_item_info_container
+                            .info-left
+                                span.title #{item.title}
+                                span.date #{item.startDate}
+                            .operate-right
+                                .btn-like.btn-liked (20)
+                                .btn-commit (32)

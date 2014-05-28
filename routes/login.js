@@ -126,5 +126,8 @@ exports.logout = function(req, res) {
 }
 
 exports.new_login = function(req, res) {
-    res.render("new_login.jade");
+    res.render("new_login.jade",{
+        title: "登录",
+        request_url: "/travel/list"
+    });
 }

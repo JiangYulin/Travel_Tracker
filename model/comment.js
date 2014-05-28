@@ -17,7 +17,7 @@ var _Comment = config.mongoose.Schema({
     "reference_id" :    config.mongoose.Schema.ObjectId,
     "reference_type" :  Number,
     "contents" :        String,
-    "date"      :       String,
+    "date"      :       Date,
     "index"     :       Number
 })
 

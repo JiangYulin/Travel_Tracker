@@ -40,6 +40,7 @@ font-family: inherit;
     float: right;
 }
 .float-left {
+    text-align: left;
     float: left;
 }
 a {
@@ -67,7 +68,7 @@ ul {
 #nav {
     position: relative;
     margin: 0 auto;
-    height: 70px;
+    height: 50px;
     width: auto;
     background-color: lightskyblue;
 }
@@ -75,7 +76,7 @@ ul {
 .nav-container {
     overflow: hidden;
     width: 600px;
-    height: 70px;
+    height: 50px;
     margin: 0 auto;
 }
 .nav-container li {
@@ -85,8 +86,8 @@ ul {
 }
 .nav-item a {
     float: left;
-    height: 70px;
-    line-height: 70px;
+    height: 50px;
+    line-height: 50px;
     padding: 0 20px;
     color: #ffffff;
 }
@@ -325,9 +326,11 @@ button:hover {
 }
 
 hr {
+    border-color: lightskyblue;
     width:100%;
     margin-top:10px;
     margin-bottom: 10px;
+    float: left;
 }
 
 /*
@@ -677,6 +680,7 @@ hr {
 .travel-img-container {
     border: 1px solid lightgray;
     margin-bottom: 30px;
+    background: #ffffff;
 }
 
 .travel-img-container .travel-img {
@@ -729,6 +733,12 @@ hr {
     background: url("/images/trip_icons.png") no-repeat 0 -51px;
 }
 
+.reply {
+    font-size: 13px;
+    color: gray;
+
+}
+
 .reply_name_item {
     float: left;
     border-radius: 3px;
@@ -744,12 +754,12 @@ hr {
     留言回复部分
 */
 
-.travel-img-comments-container {
+.travel-comments-container {
     display: none;
     padding: 10px;
 }
 
-.travel-img-comments {
+.travel-comments {
 
     border-top: 1px solid lightseagreen;
     padding: 10px;
@@ -757,28 +767,33 @@ hr {
 
 }
 
-.travel-img-comment {
+.travel-comment {
 
     border-bottom: 1px dotted lightblue;
     margin-top: 5px;
 
 }
 
-.travel-img-comment .username {
+.travel-comment .username {
     color: lightskyblue;
     font-size: 13px;
 }
-.travel-img-comment .content {
+.travel-comment .content {
     font-size: 13px;
     color: gray;
 }
 
-.travel-img-comment-form-container {
+.travel-comment-form-container {
 
 }
 
-.travel-img-comment-form {
+.travel-comment-form {
 
+}
+
+#comments_container {
+    background: #ffffff;
+    padding: 20px;
 }
 
 /*
@@ -904,7 +919,7 @@ hr {
     position: absolute;
 }
 
-#login_page {
+.big_page {
     background-image:url("/images/bg.jpg");
     background-size: cover;
     position: absolute;
@@ -937,4 +952,78 @@ hr {
     background-color: rgba(0,0,0,0.8);
     display: none;
     opacity: 0;
+}
+
+/*
+    404 page
+*/
+
+.not_found {
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    top:30%;
+    background: rgba(255,255,255,0.6);
+}
+
+.not_found .code {
+    font-size: 60px;
+    color: black;
+    line-height: 200px;
+    padding-right: 20px;
+    display: inline;
+    border-right: 6px solid lightskyblue;
+    margin-right: 20px;
+}
+
+.not_found .des_code {
+    display: inline;
+    color: gray;
+    line-height: 200px;
+    font-size: 50px;
+}
+
+/*
+explore  页面
+*/
+
+.explore_item {
+    float: left;
+    background: #ffffff;
+    width: 300px;
+    height: 200px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 10px;
+}
+
+.explore_item:hover {
+    box-shadow: 0 0 3px rgba(0,255,255,0.6);
+}
+
+.explore_item_img_container {
+    float: left;
+    width: 300px;
+    height: 150px;
+    overflow: hidden;
+    background-size: cover;
+
+}
+
+.explore_item_info_container {
+    border-top: 1px solid red;
+    width: 290px;
+    float: left;
+    height: 50px;
+    padding: 5px;
+}
+
+.info-left {
+    float: left;
+    text-align: left;
+}
+.operate-right {
+    float: right;
+    width: 60px;
+    text-align: left;
 }

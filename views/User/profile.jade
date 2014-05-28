@@ -2,10 +2,9 @@
 extends ./../layout/layout_desktop
 block content
     #main
-        #data_container
             div.profile-container
                 div.profile-img
-                    h4 头像
+                    h4.float-left 头像
                     hr
                     form#change_img
                         div.user_pic_container
@@ -18,7 +17,7 @@ block content
                             button.btn 更换照片
                             input#user_img(name="user_img", type="file")
                 div.profile-detail
-                    h4 基本信息
+                    h4(style="text-align:left") 基本信息
                     hr
                     form#change_detail
                         ul.profile

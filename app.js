@@ -85,6 +85,7 @@
     app.get('/travel/new', travel.new);
     app.post('/travel/new', travel.new_post);
     app.get('/travel/list', travel.list);
+    app.get('/explore', travel.explore);
     app.get('/travel/upload/:travelID', edit.index);
     app.get('/travel/show/:travelID', travel.show);
     app.get('/travel/edit/:travelID', edit.add_location);
@@ -99,6 +100,12 @@
     app.post('/:photoID/detail', photo.set_detail);
     app.post('/:photoID/comments', photo.get_comments);
     app.post('/:photoID/reply', photo.reply);
+
+    /*
+    旅程的回复个欧冠你能等
+     */
+    app.post('/travel/:travelID/reply', travel.reply);
+    app.post('/travel/:travelID/comments', travel.get_comments);
 
     /*
     用户信息方面

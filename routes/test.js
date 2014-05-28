@@ -2,7 +2,7 @@
  * Created by jiangyulin on 13-12-26.
  */
 exports.test = function(req,res){
-    res.render("test.jade",{"title":"ok"})
+    res.render("404.jade",{"title":"ok"})
 };
 
 exports.test_post = function(req, res) {
